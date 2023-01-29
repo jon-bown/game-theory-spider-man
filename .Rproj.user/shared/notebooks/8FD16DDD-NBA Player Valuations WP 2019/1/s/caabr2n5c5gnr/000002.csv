@@ -1,0 +1,148 @@
+"0","cols <- c(""Player"", ""MRP"", ""X2018.19"")"
+"0","df <-  na.omit(player_data_slry[order(player_data_slry$MRP),cols])"
+"0","df <- df[1:20,]"
+"0","df$Player <- lapply(df$Player, function(x) {sub(""\\\\.*"","""",x)})"
+"0","df$MRP <- dollar(df$MRP)"
+"0","df$Salary <- lapply(df$X2018.19, function(x) {sub(""\\$"","""",x)})"
+"0","df$Salary <- as.numeric(df$Salary)"
+"0","df$Salary <- dollar(df$Salary)"
+"0","df$diff <- dollar(as.numeric(gsub('[$,]', '', df$MRP)) - as.numeric(gsub('[$,]', '', df$Salary)))"
+"0","cols <- c(""Player"", ""MRP"", ""Salary"", ""diff"")"
+"0","kable(x=df[,cols], align=c('l','c'), row.names = FALSE, col.names = c('Player', 'MRP', 'Salary', ""NOV""), caption=""\\label{wa_corr}MRP Bottom 20"")  %>%"
+"0","      kable_styling(latex_options = c(""striped"",""hold_position""),"
+"0","                    full_width = FALSE,font_size = 12, bootstrap_options = c(""striped"", ""hover""))"
+"1","<table class=""table table-striped table-hover"" style=""font-size: 12px; width: auto !important; margin-left: auto; margin-right: auto;"">
+<caption style=""font-size: initial !important;"">\label{wa_corr}MRP Bottom 20</caption>
+ <thead>
+  <tr>
+   <th style=""text-align:left;""> Player </th>
+   <th style=""text-align:center;""> MRP </th>
+   <th style=""text-align:left;""> Salary </th>
+   <th style=""text-align:center;""> NOV </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style=""text-align:left;""> Kevin Knox </td>
+   <td style=""text-align:center;""> $-84,520,093 </td>
+   <td style=""text-align:left;""> $3,739,920 </td>
+   <td style=""text-align:center;""> $-88,260,013 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Collin Sexton </td>
+   <td style=""text-align:center;""> $-46,978,074 </td>
+   <td style=""text-align:left;""> $4,068,600 </td>
+   <td style=""text-align:center;""> $-51,046,674 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Jamal Crawford </td>
+   <td style=""text-align:center;""> $-25,080,435 </td>
+   <td style=""text-align:left;""> $2,393,887 </td>
+   <td style=""text-align:center;""> $-27,474,322 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Wayne Selden </td>
+   <td style=""text-align:center;""> $-20,121,060 </td>
+   <td style=""text-align:left;""> $1,544,951 </td>
+   <td style=""text-align:center;""> $-21,666,011 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Cedi Osman </td>
+   <td style=""text-align:center;""> $-17,696,348 </td>
+   <td style=""text-align:left;""> $2,775,000 </td>
+   <td style=""text-align:center;""> $-20,471,348 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Frank Ntilikina </td>
+   <td style=""text-align:center;""> $-16,932,477 </td>
+   <td style=""text-align:left;""> $4,155,720 </td>
+   <td style=""text-align:center;""> $-21,088,197 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Nik Stauskas </td>
+   <td style=""text-align:center;""> $-15,404,734 </td>
+   <td style=""text-align:left;""> $1,621,415 </td>
+   <td style=""text-align:center;""> $-17,026,149 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Antonio Blakeney </td>
+   <td style=""text-align:center;""> $-15,393,161 </td>
+   <td style=""text-align:left;""> $1,349,383 </td>
+   <td style=""text-align:center;""> $-16,742,544 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Elie Okobo </td>
+   <td style=""text-align:center;""> $-12,603,874 </td>
+   <td style=""text-align:left;""> $1,238,464 </td>
+   <td style=""text-align:center;""> $-13,842,338 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Allonzo Trier </td>
+   <td style=""text-align:center;""> $-12,379,206 </td>
+   <td style=""text-align:left;""> $3,382,000 </td>
+   <td style=""text-align:center;""> $-15,761,206 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Marquese Chriss </td>
+   <td style=""text-align:center;""> $-10,312,260 </td>
+   <td style=""text-align:left;""> $3,206,160 </td>
+   <td style=""text-align:center;""> $-13,518,420 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Timothe Luwawu-Cabarrot </td>
+   <td style=""text-align:center;""> $-9,895,603 </td>
+   <td style=""text-align:left;""> $1,544,951 </td>
+   <td style=""text-align:center;""> $-11,440,554 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Josh Jackson </td>
+   <td style=""text-align:center;""> $-8,657,206 </td>
+   <td style=""text-align:left;""> $6,041,520 </td>
+   <td style=""text-align:center;""> $-14,698,726 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Frank Jackson </td>
+   <td style=""text-align:center;""> $-7,769,881 </td>
+   <td style=""text-align:left;""> $1,378,242 </td>
+   <td style=""text-align:center;""> $-9,148,123 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Jonathon Simmons </td>
+   <td style=""text-align:center;""> $-6,213,318 </td>
+   <td style=""text-align:left;""> $6,000,000 </td>
+   <td style=""text-align:center;""> $-12,213,318 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Jerryd Bayless </td>
+   <td style=""text-align:center;""> $-6,114,505 </td>
+   <td style=""text-align:left;""> $8,575,916 </td>
+   <td style=""text-align:center;""> $-14,690,421 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Cristiano Felicio </td>
+   <td style=""text-align:center;""> $-6,047,313 </td>
+   <td style=""text-align:left;""> $8,470,980 </td>
+   <td style=""text-align:center;""> $-14,518,293 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Will Barton </td>
+   <td style=""text-align:center;""> $-5,778,544 </td>
+   <td style=""text-align:left;""> $11,830,358 </td>
+   <td style=""text-align:center;""> $-17,608,902 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Shelvin Mack </td>
+   <td style=""text-align:center;""> $-5,644,159 </td>
+   <td style=""text-align:left;""> $2,029,463 </td>
+   <td style=""text-align:center;""> $-7,673,622 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Dragan Bender </td>
+   <td style=""text-align:center;""> $-4,965,162 </td>
+   <td style=""text-align:left;""> $4,661,280 </td>
+   <td style=""text-align:center;""> $-9,626,442 </td>
+  </tr>
+</tbody>
+</table>"
+"1","
+"

@@ -1,0 +1,139 @@
+"0","#Add column for surplus ws, surplus wp"
+"0","player_data_tm$Player <- unlist(lapply(player_data_tm$Player, function(x) {sub(""\\,.*"","""",x)}))"
+"0","player_data_slry <- join(player_salary_data[,c('Player', 'X2018.19', 'Tm')], player_data_tm, by = ""Player"")"
+"0","player_data_slry$Player <- unlist(lapply(player_data_slry$Player, function(x) {sub(""\\\\.*"","""",x)}))"
+"0","player_data_slry <- join(player_data_slry, player_rpmw_data_raw, by = ""Player"")"
+"0","player_data_slry$MRP <-  (player_data_slry$WINS/player_data_slry$W*82)*player_data_slry$CPW"
+"0","player_data_jzz <- player_data_slry[which(player_data_slry$Tm == 'UTA'),]"
+"0","player_data_n1 <- player_data_slry[which(player_data_slry$Player == 'Bojan Bogdanovic'),]"
+"0","player_data_n2 <- player_data_slry[which(player_data_slry$Player == 'Ed Davis'),]"
+"0","player_data_n3 <- player_data_slry[which(player_data_slry$Player == 'Mike Conley'),]"
+"0","player_data_n4 <- player_data_slry[which(player_data_slry$Player == 'Jeff Green'),]"
+"0","player_data_n5 <- player_data_slry[which(player_data_slry$Player == 'Emmanuel Mudiay'),]"
+"0","player_data_jzz <- player_data_jzz[which(player_data_jzz$Player != ""Kyle Korver"" & player_data_jzz$Player != ""Grayson Allen"" & player_data_jzz$Player != ""Jae Crowder""& player_data_jzz$Player != ""Derrick Favors"" & player_data_jzz$Player != ""Ricky Rubio""),]"
+"0","player_data_jzz <- rbind(player_data_jzz,player_data_n1,player_data_n2,player_data_n3, player_data_n4, player_data_n5)"
+"0","cols <- c(""Player"", ""MRP"", ""X2018.19"", ""MRP"")"
+"0","df <-  player_data_jzz[order(-player_data_jzz$MRP),cols]"
+"0","df$Player <- lapply(df$Player, function(x) {sub(""\\\\.*"","""",x)})"
+"0","produce <- sum(df$MRP)"
+"0","df$MRP <- dollar(df$MRP)"
+"0","df$Salary <- lapply(df$X2018.19, function(x) {sub(""\\$"","""",x)})"
+"0","df$Salary <- as.numeric(df$Salary)"
+"0","cost <- sum(df$Salary)"
+"0","df$Salary <- dollar(df$Salary)"
+"0","df$diff1 <- as.numeric(gsub('[$,]', '', df$MRP)) - as.numeric(gsub('[$,]', '', df$Salary))"
+"0","cols <- c(""Player"", ""MRP"", ""Salary"", ""diff1"")"
+"0","df <-  df[order(-df$diff1),cols]"
+"0","df$diff2 <- dollar(df$diff1)"
+"0","cols <- c(""Player"", ""MRP"", ""Salary"", ""diff2"")"
+"0","kable(x=df[,cols], align=c('l','c'), row.names = FALSE, col.names = c('Player', 'MRP', 'Salary', ""NOV""), caption=""\\label{wa_corr}Utah Jazz Roster July 2019"")  %>%"
+"0","      kable_styling(latex_options = c(""striped"",""hold_position""),"
+"0","                    full_width = TRUE,font_size = 12, bootstrap_options = c(""striped"", ""hover""))"
+"1","<table class=""table table-striped table-hover"" style=""font-size: 12px; margin-left: auto; margin-right: auto;"">
+<caption style=""font-size: initial !important;"">\label{wa_corr}Utah Jazz Roster July 2019</caption>
+ <thead>
+  <tr>
+   <th style=""text-align:left;""> Player </th>
+   <th style=""text-align:center;""> MRP </th>
+   <th style=""text-align:left;""> Salary </th>
+   <th style=""text-align:center;""> NOV </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style=""text-align:left;""> Rudy Gobert </td>
+   <td style=""text-align:center;""> $63,375,841 </td>
+   <td style=""text-align:left;""> $23,241,573 </td>
+   <td style=""text-align:center;""> $40,134,268 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Donovan Mitchell </td>
+   <td style=""text-align:center;""> $42,089,299 </td>
+   <td style=""text-align:left;""> $3,111,480 </td>
+   <td style=""text-align:center;""> $38,977,819 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Mike Conley </td>
+   <td style=""text-align:center;""> $68,902,719 </td>
+   <td style=""text-align:left;""> $30,521,116 </td>
+   <td style=""text-align:center;""> $38,381,603 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Joe Ingles </td>
+   <td style=""text-align:center;""> $48,572,019 </td>
+   <td style=""text-align:left;""> $13,045,455 </td>
+   <td style=""text-align:center;""> $35,526,564 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Ed Davis </td>
+   <td style=""text-align:center;""> $30,754,907 </td>
+   <td style=""text-align:left;""> $4,449,000 </td>
+   <td style=""text-align:center;""> $26,305,907 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Jeff Green </td>
+   <td style=""text-align:center;""> $22,450,650 </td>
+   <td style=""text-align:left;""> $2,393,887 </td>
+   <td style=""text-align:center;""> $20,056,763 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Royce O'Neale </td>
+   <td style=""text-align:center;""> $20,754,378 </td>
+   <td style=""text-align:left;""> $1,378,242 </td>
+   <td style=""text-align:center;""> $19,376,136 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Bojan Bogdanovic </td>
+   <td style=""text-align:center;""> $27,313,697 </td>
+   <td style=""text-align:left;""> $10,500,000 </td>
+   <td style=""text-align:center;""> $16,813,697 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Thabo Sefolosha </td>
+   <td style=""text-align:center;""> $9,095,159 </td>
+   <td style=""text-align:left;""> $5,250,000 </td>
+   <td style=""text-align:center;""> $3,845,159 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Raul Neto </td>
+   <td style=""text-align:center;""> $4,934,607 </td>
+   <td style=""text-align:left;""> $2,150,000 </td>
+   <td style=""text-align:center;""> $2,784,607 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Emmanuel Mudiay </td>
+   <td style=""text-align:center;""> $5,976,168 </td>
+   <td style=""text-align:left;""> $4,294,480 </td>
+   <td style=""text-align:center;""> $1,681,688 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Ekpe Udoh </td>
+   <td style=""text-align:center;""> $3,483,252 </td>
+   <td style=""text-align:left;""> $3,360,000 </td>
+   <td style=""text-align:center;""> $123,252 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Georges Niang </td>
+   <td style=""text-align:center;""> $1,548,112 </td>
+   <td style=""text-align:left;""> $1,512,601 </td>
+   <td style=""text-align:center;""> $35,511 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Tony Bradley </td>
+   <td style=""text-align:center;""> $193,514 </td>
+   <td style=""text-align:left;""> $1,679,520 </td>
+   <td style=""text-align:center;""> $-1,486,006 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Dante Exum </td>
+   <td style=""text-align:center;""> $2,080,276 </td>
+   <td style=""text-align:left;""> $9,600,000 </td>
+   <td style=""text-align:center;""> $-7,519,724 </td>
+  </tr>
+</tbody>
+</table>"
+"1","
+"
+"0","#sum(player_data_tm[which(player_data_tm$Tm == ""CLE""),""WS""])"
+"0","wo <- sum(df$diff1)"
+"0","profit <- produce - cost"

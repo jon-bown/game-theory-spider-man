@@ -1,0 +1,99 @@
+"0","cols <- c(""Player"", ""RPMWS"")"
+"0","df <-  player_rpm_win_data[order(-player_rpm_win_data$RPMWS),cols] "
+"0","df <- df[1:20,]"
+"0","kable(x=df[,cols], align=c('l','c'), row.names = FALSE, col.names = c('Player', 'RPM Win Share'), caption=""\\label{wa_corr}RPM Win Share Top 20"")  %>%"
+"0","      kable_styling(latex_options = c(""striped"",""hold_position""),"
+"0","                    full_width = FALSE,font_size = 12, bootstrap_options = c(""striped"", ""hover""))"
+"1","<table class=""table table-striped table-hover"" style=""font-size: 12px; width: auto !important; margin-left: auto; margin-right: auto;"">
+<caption style=""font-size: initial !important;"">\label{wa_corr}RPM Win Share Top 20</caption>
+ <thead>
+  <tr>
+   <th style=""text-align:left;""> Player </th>
+   <th style=""text-align:center;""> RPM Win Share </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style=""text-align:left;""> Paul George </td>
+   <td style=""text-align:center;""> 33.24 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> James Harden </td>
+   <td style=""text-align:center;""> 28.68 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Nikola Vucevic </td>
+   <td style=""text-align:center;""> 26.69 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Karl-Anthony Towns </td>
+   <td style=""text-align:center;""> 25.90 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> LeBron James </td>
+   <td style=""text-align:center;""> 24.47 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Mike Conley </td>
+   <td style=""text-align:center;""> 23.36 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Nikola Jokic </td>
+   <td style=""text-align:center;""> 22.64 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Damian Lillard </td>
+   <td style=""text-align:center;""> 22.46 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Larry Nance Jr. </td>
+   <td style=""text-align:center;""> 21.15 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Danilo Gallinari </td>
+   <td style=""text-align:center;""> 20.96 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Giannis Antetokounmpo </td>
+   <td style=""text-align:center;""> 20.80 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Joel Embiid </td>
+   <td style=""text-align:center;""> 20.74 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Blake Griffin </td>
+   <td style=""text-align:center;""> 19.64 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Patrick Beverley </td>
+   <td style=""text-align:center;""> 18.86 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> De'Aaron Fox </td>
+   <td style=""text-align:center;""> 17.83 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Andre Drummond </td>
+   <td style=""text-align:center;""> 17.52 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Kyrie Irving </td>
+   <td style=""text-align:center;""> 17.30 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Josh Richardson </td>
+   <td style=""text-align:center;""> 16.61 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Russell Westbrook </td>
+   <td style=""text-align:center;""> 16.33 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Luka Doncic </td>
+   <td style=""text-align:center;""> 16.30 </td>
+  </tr>
+</tbody>
+</table>"
+"1","
+"

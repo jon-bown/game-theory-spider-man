@@ -1,0 +1,151 @@
+"0","cols <- c(""Player"", ""MRP"", ""X2018.19"")"
+"0","df <-  na.omit(player_data_slry[order(-player_data_slry$MRP),cols])"
+"0","df$Player <- lapply(df$Player, function(x) {sub(""\\\\.*"","""",x)})"
+"0","df$MRP <- dollar(df$MRP)"
+"0","df$Salary <- lapply(df$X2018.19, function(x) {sub(""\\$"","""",x)})"
+"0","df$Salary <- as.numeric(df$Salary)"
+"0","df$Salary <- dollar(df$Salary)"
+"0","df$diff <- dollar(as.numeric(gsub('[$,]', '', df$MRP)) - as.numeric(gsub('[$,]', '', df$Salary)))"
+"0","df$diff <- as.numeric(gsub('[$,]', '', df$MRP)) - as.numeric(gsub('[$,]', '', df$Salary))"
+"0","cols <- c(""Player"", ""MRP"", ""Salary"", ""diff"")"
+"0","df <- df[order(df$diff),cols]"
+"0","df$diff <- dollar(df$diff)"
+"0","cols <- c(""Player"", ""MRP"", ""Salary"", ""diff"")"
+"0","kable(x=df[1:20,cols], align=c('l','c'), row.names = FALSE, col.names = c('Player', 'MRP', 'Salary', ""NOV""), caption=""\\label{wa_corr}Most Overvalued Players"")  %>%"
+"0","      kable_styling(latex_options = c(""striped"",""hold_position""),"
+"0","                    full_width = FALSE,font_size = 12, bootstrap_options = c(""striped"", ""hover""))"
+"1","<table class=""table table-striped table-hover"" style=""font-size: 12px; width: auto !important; margin-left: auto; margin-right: auto;"">
+<caption style=""font-size: initial !important;"">\label{wa_corr}Most Overvalued Players</caption>
+ <thead>
+  <tr>
+   <th style=""text-align:left;""> Player </th>
+   <th style=""text-align:center;""> MRP </th>
+   <th style=""text-align:left;""> Salary </th>
+   <th style=""text-align:center;""> NOV </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style=""text-align:left;""> Kevin Knox </td>
+   <td style=""text-align:center;""> $-84,520,093 </td>
+   <td style=""text-align:left;""> $3,739,920 </td>
+   <td style=""text-align:center;""> $-88,260,013 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Collin Sexton </td>
+   <td style=""text-align:center;""> $-46,978,074 </td>
+   <td style=""text-align:left;""> $4,068,600 </td>
+   <td style=""text-align:center;""> $-51,046,674 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Jamal Crawford </td>
+   <td style=""text-align:center;""> $-25,080,435 </td>
+   <td style=""text-align:left;""> $2,393,887 </td>
+   <td style=""text-align:center;""> $-27,474,322 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Carmelo Anthony </td>
+   <td style=""text-align:center;""> $730,242 </td>
+   <td style=""text-align:left;""> $25,534,253 </td>
+   <td style=""text-align:center;""> $-24,804,011 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Chandler Parsons </td>
+   <td style=""text-align:center;""> $1,539,316 </td>
+   <td style=""text-align:left;""> $24,107,258 </td>
+   <td style=""text-align:center;""> $-22,567,942 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Wayne Selden </td>
+   <td style=""text-align:center;""> $-20,121,060 </td>
+   <td style=""text-align:left;""> $1,544,951 </td>
+   <td style=""text-align:center;""> $-21,666,011 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Frank Ntilikina </td>
+   <td style=""text-align:center;""> $-16,932,477 </td>
+   <td style=""text-align:left;""> $4,155,720 </td>
+   <td style=""text-align:center;""> $-21,088,197 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Cedi Osman </td>
+   <td style=""text-align:center;""> $-17,696,348 </td>
+   <td style=""text-align:left;""> $2,775,000 </td>
+   <td style=""text-align:center;""> $-20,471,348 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Ryan Anderson </td>
+   <td style=""text-align:center;""> $930,356 </td>
+   <td style=""text-align:left;""> $20,421,546 </td>
+   <td style=""text-align:center;""> $-19,491,190 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Brandon Knight </td>
+   <td style=""text-align:center;""> $-3,692,044 </td>
+   <td style=""text-align:left;""> $14,631,250 </td>
+   <td style=""text-align:center;""> $-18,323,294 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Will Barton </td>
+   <td style=""text-align:center;""> $-5,778,544 </td>
+   <td style=""text-align:left;""> $11,830,358 </td>
+   <td style=""text-align:center;""> $-17,608,902 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Nik Stauskas </td>
+   <td style=""text-align:center;""> $-15,404,734 </td>
+   <td style=""text-align:left;""> $1,621,415 </td>
+   <td style=""text-align:center;""> $-17,026,149 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Antonio Blakeney </td>
+   <td style=""text-align:center;""> $-15,393,161 </td>
+   <td style=""text-align:left;""> $1,349,383 </td>
+   <td style=""text-align:center;""> $-16,742,544 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Dwight Howard </td>
+   <td style=""text-align:center;""> $2,343,334 </td>
+   <td style=""text-align:left;""> $18,919,725 </td>
+   <td style=""text-align:center;""> $-16,576,391 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Allen Crabbe </td>
+   <td style=""text-align:center;""> $2,015,771 </td>
+   <td style=""text-align:left;""> $18,500,000 </td>
+   <td style=""text-align:center;""> $-16,484,229 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Bismack Biyombo </td>
+   <td style=""text-align:center;""> $992,380 </td>
+   <td style=""text-align:left;""> $17,000,000 </td>
+   <td style=""text-align:center;""> $-16,007,620 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Evan Turner </td>
+   <td style=""text-align:center;""> $2,008,164 </td>
+   <td style=""text-align:left;""> $17,868,852 </td>
+   <td style=""text-align:center;""> $-15,860,688 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Allonzo Trier </td>
+   <td style=""text-align:center;""> $-12,379,206 </td>
+   <td style=""text-align:left;""> $3,382,000 </td>
+   <td style=""text-align:center;""> $-15,761,206 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Solomon Hill </td>
+   <td style=""text-align:center;""> $-2,785,429 </td>
+   <td style=""text-align:left;""> $12,252,928 </td>
+   <td style=""text-align:center;""> $-15,038,357 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Alec Burks </td>
+   <td style=""text-align:center;""> $-3,310,108 </td>
+   <td style=""text-align:left;""> $11,536,515 </td>
+   <td style=""text-align:center;""> $-14,846,623 </td>
+  </tr>
+</tbody>
+</table>"
+"1","
+"

@@ -1,0 +1,129 @@
+"0","#Add column for surplus ws, surplus wp"
+"0","player_data_tm$Player <- unlist(lapply(player_data_tm$Player, function(x) {sub(""\\,.*"","""",x)}))"
+"0","player_data_slry <- join(player_salary_data[,c('Player', 'X2018.19', 'Tm')], player_data_tm, by = ""Player"")"
+"0","player_data_slry$Player <- unlist(lapply(player_data_slry$Player, function(x) {sub(""\\\\.*"","""",x)}))"
+"0","player_data_slry <- join(player_data_slry, player_rpmw_data_raw, by = ""Player"")"
+"0","player_data_slry$MRP <-  (player_data_slry$WINS/player_data_slry$W*82)*player_data_slry$CPW"
+"0","player_data_jzz <- player_data_slry[which(player_data_slry$Tm == 'UTA'),]"
+"0","cols <- c(""Player"", ""MRP"", ""X2018.19"", ""MRP"")"
+"0","df <-  player_data_jzz[order(-player_data_jzz$MRP),cols]"
+"0","df$Player <- lapply(df$Player, function(x) {sub(""\\\\.*"","""",x)})"
+"0","df$MRP <- dollar(df$MRP)"
+"0","df$Salary <- lapply(df$X2018.19, function(x) {sub(""\\$"","""",x)})"
+"0","df$Salary <- as.numeric(df$Salary)"
+"0","df$Salary <- dollar(df$Salary)"
+"0","df$diff1 <- as.numeric(gsub('[$,]', '', df$MRP)) - as.numeric(gsub('[$,]', '', df$Salary))"
+"0","cols <- c(""Player"", ""MRP"", ""Salary"", ""diff1"")"
+"0","df <-  df[order(-df$diff1),cols]"
+"0","df$diff2 <- dollar(df$diff1)"
+"0","cols <- c(""Player"", ""MRP"", ""Salary"", ""diff2"")"
+"0","kable(x=df[,cols], align=c('l','c'), row.names = FALSE, col.names = c('Player', 'MRP', 'Salary', ""NOV""), caption=""Utah Jazz Player NOV RPM"")  %>%"
+"0","      kable_styling(latex_options = c(""striped"",""hold_position""),"
+"0","                    full_width = TRUE,font_size = 12, bootstrap_options = c(""striped"", ""hover""))"
+"1","<table class=""table table-striped table-hover"" style=""font-size: 12px; margin-left: auto; margin-right: auto;"">
+<caption style=""font-size: initial !important;"">Utah Jazz Player NOV RPM</caption>
+ <thead>
+  <tr>
+   <th style=""text-align:left;""> Player </th>
+   <th style=""text-align:center;""> MRP </th>
+   <th style=""text-align:left;""> Salary </th>
+   <th style=""text-align:center;""> NOV </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style=""text-align:left;""> Rudy Gobert </td>
+   <td style=""text-align:center;""> $63,375,841 </td>
+   <td style=""text-align:left;""> $23,241,573 </td>
+   <td style=""text-align:center;""> $40,134,268 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Donovan Mitchell </td>
+   <td style=""text-align:center;""> $42,089,299 </td>
+   <td style=""text-align:left;""> $3,111,480 </td>
+   <td style=""text-align:center;""> $38,977,819 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Joe Ingles </td>
+   <td style=""text-align:center;""> $48,572,019 </td>
+   <td style=""text-align:left;""> $13,045,455 </td>
+   <td style=""text-align:center;""> $35,526,564 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Royce O'Neale </td>
+   <td style=""text-align:center;""> $20,754,378 </td>
+   <td style=""text-align:left;""> $1,378,242 </td>
+   <td style=""text-align:center;""> $19,376,136 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Derrick Favors </td>
+   <td style=""text-align:center;""> $31,494,407 </td>
+   <td style=""text-align:left;""> $16,900,000 </td>
+   <td style=""text-align:center;""> $14,594,407 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Ricky Rubio </td>
+   <td style=""text-align:center;""> $26,946,827 </td>
+   <td style=""text-align:left;""> $14,975,000 </td>
+   <td style=""text-align:center;""> $11,971,827 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Jae Crowder </td>
+   <td style=""text-align:center;""> $19,109,509 </td>
+   <td style=""text-align:left;""> $7,305,825 </td>
+   <td style=""text-align:center;""> $11,803,684 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Thabo Sefolosha </td>
+   <td style=""text-align:center;""> $9,095,159 </td>
+   <td style=""text-align:left;""> $5,250,000 </td>
+   <td style=""text-align:center;""> $3,845,159 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Raul Neto </td>
+   <td style=""text-align:center;""> $4,934,607 </td>
+   <td style=""text-align:left;""> $2,150,000 </td>
+   <td style=""text-align:center;""> $2,784,607 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Kyle Korver </td>
+   <td style=""text-align:center;""> $8,950,023 </td>
+   <td style=""text-align:left;""> $7,560,000 </td>
+   <td style=""text-align:center;""> $1,390,023 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Ekpe Udoh </td>
+   <td style=""text-align:center;""> $3,483,252 </td>
+   <td style=""text-align:left;""> $3,360,000 </td>
+   <td style=""text-align:center;""> $123,252 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Georges Niang </td>
+   <td style=""text-align:center;""> $1,548,112 </td>
+   <td style=""text-align:left;""> $1,512,601 </td>
+   <td style=""text-align:center;""> $35,511 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Tony Bradley </td>
+   <td style=""text-align:center;""> $193,514 </td>
+   <td style=""text-align:left;""> $1,679,520 </td>
+   <td style=""text-align:center;""> $-1,486,006 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Grayson Allen </td>
+   <td style=""text-align:center;""> $-3,096,224 </td>
+   <td style=""text-align:left;""> $2,074,320 </td>
+   <td style=""text-align:center;""> $-5,170,544 </td>
+  </tr>
+  <tr>
+   <td style=""text-align:left;""> Dante Exum </td>
+   <td style=""text-align:center;""> $2,080,276 </td>
+   <td style=""text-align:left;""> $9,600,000 </td>
+   <td style=""text-align:center;""> $-7,519,724 </td>
+  </tr>
+</tbody>
+</table>"
+"1","
+"
+"0","#sum(player_data_tm[which(player_data_tm$Tm == ""CLE""),""WS""])"
+"0","wo <- sum(df$diff1)-df[which(df$Player == ""Kyle Korver""), 'diff1']+ df[which(df$Player == ""Grayson Allen""), 'diff1'] + df[which(df$Player == ""Jae Crowder""), 'diff1']"

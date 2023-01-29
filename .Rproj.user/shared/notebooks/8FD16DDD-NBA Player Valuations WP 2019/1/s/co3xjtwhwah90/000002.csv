@@ -1,0 +1,39 @@
+"0","player_data_co <- player_data_slry[which(player_data_slry$Player == 'Mike Conley'),]"
+"0","player_data_co$after <-  player_data_co$WINS*player_data_co[1,'CPW']"
+"0","cols <- c(""Player"", ""MRP"", ""X2018.19"", ""after"")"
+"0","df <-  player_data_co[,cols]"
+"0","df$Player <- lapply(df$Player, function(x) {sub(""\\\\.*"","""",x)})"
+"0","df$MRP <- dollar(df$MRP)"
+"0","df$Salary <- lapply(df$X2018.19, function(x) {sub(""\\$"","""",x)})"
+"0","df$Salary <- as.numeric(df$Salary)"
+"0","df$Salary <- dollar(df$Salary)"
+"0","df$diff1 <- as.numeric(gsub('[$,]', '', df$after)) - as.numeric(gsub('[$,]', '', df$Salary))"
+"0","cols <- c(""Player"", ""MRP"", ""Salary"", ""diff1"")"
+"0","df <-  df[order(-df$diff1),cols]"
+"0","df$diff2 <- dollar(df$diff1)"
+"0","cols <- c(""Player"", ""MRP"", ""Salary"", ""diff2"")"
+"0","kable(x=df[,cols], align=c('l','c'), row.names = FALSE, col.names = c('Player', 'MRP', 'Salary', ""NOV"" ), caption="""")  %>%"
+"0","      kable_styling(latex_options = c(""striped"",""hold_position""),"
+"0","                    full_width = TRUE,font_size = 12, bootstrap_options = c(""striped"", ""hover""))"
+"1","<table class=""table table-striped table-hover"" style=""font-size: 12px; margin-left: auto; margin-right: auto;"">
+<caption style=""font-size: initial !important;""></caption>
+ <thead>
+  <tr>
+   <th style=""text-align:left;""> Player </th>
+   <th style=""text-align:center;""> MRP </th>
+   <th style=""text-align:left;""> Salary </th>
+   <th style=""text-align:center;""> NOV </th>
+  </tr>
+ </thead>
+<tbody>
+  <tr>
+   <td style=""text-align:left;""> Mike Conley </td>
+   <td style=""text-align:center;""> $27,729,143 </td>
+   <td style=""text-align:left;""> $30,521,116 </td>
+   <td style=""text-align:center;""> $-2,791,973 </td>
+  </tr>
+</tbody>
+</table>"
+"1","
+"
+"0","w <- wo+df$diff1"
