@@ -4,4 +4,4 @@ There was a point in the recent history of Sony and Marvel that a deal almost fe
 
 Making some simple assumptions about the issue, I modeled this using a standard two player two strategy game from the field of Game Theory.
 
-The final verson of the analysis is contained in the 'sony-spider.html' file.
+The final verson of the analysis is contained in the 'sonySpider.html' file.
